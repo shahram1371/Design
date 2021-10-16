@@ -1,6 +1,9 @@
-// ignore_for_file: file_names, must_be_immutable
+// ignore_for_file: file_names, must_be_immutable, unnecessary_const
 
 import 'package:flutter/material.dart';
+import 'package:design/branches/listViewWidgetFilm.dart';
+import 'package:design/branches/listViewWidgetArtist.dart';
+import 'package:design/branches/listViewWidgetNews.dart';
 
 class SecondScreen extends StatefulWidget {
   const SecondScreen({Key? key}) : super(key: key);
@@ -63,17 +66,120 @@ class _SecondScreenState extends State<SecondScreen> {
                     style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                   ),
                 ),
-                ListViewWidgetArtist(),
+                const ListViewWidgetArtist(),
                 const SizedBox(
                   height: 50.0,
                 ),
-                RowWidget(
-                  text: const Text(
-                    "اخبار",
-                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                const Padding(
+                  padding: EdgeInsets.only(right: 30.0),
+                  child: Align(
+                    alignment: Alignment.centerRight,
+                    child: Text(
+                      "اخبار",
+                      style:
+                          TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+                    ),
                   ),
                 ),
-                ListViewWidgetNews(),
+                const ListViewWidgetNews(),
+                const SizedBox(
+                  height: 50.0,
+                ),
+                const Padding(
+                  padding: EdgeInsets.only(right: 40.0),
+                  child: Align(
+                    alignment: Alignment.centerRight,
+                    child: Text(
+                      "قلک ها",
+                      style:
+                          TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(right: 30.0, bottom: 8.0),
+                  child: Align(
+                    alignment: Alignment.topRight,
+                    child: Stack(
+                      children: [
+                        Card(
+                          // elevation: 20,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(15.0),
+                          ),
+                          child: Container(
+                            width: 350,
+                            height: 120,
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(15),
+                            ),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              children: [
+                                Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  crossAxisAlignment: CrossAxisAlignment.end,
+                                  children: const [
+                                    Text(
+                                      "A۱۰۰:شماره قلک",
+                                      style: TextStyle(
+                                          color: Color(0xff707070),
+                                          fontSize: 15,
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                    Padding(
+                                      padding: EdgeInsets.only(right: 18.0),
+                                      child: Text("آقای علی عزیزی",
+                                          style: TextStyle(
+                                              color: Color(0xff707070),
+                                              fontSize: 13,
+                                              fontWeight: FontWeight.bold)),
+                                    ),
+                                    Padding(
+                                      padding: EdgeInsets.only(right: 8.0),
+                                      child: Text("شغل: مدیر",
+                                          style: TextStyle(
+                                              color: Color(0xff707070),
+                                              fontSize: 13,
+                                              fontWeight: FontWeight.bold)),
+                                    ),
+                                  ],
+                                ),
+                                const SizedBox(
+                                  width: 20,
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: ClipRRect(
+                                    borderRadius: BorderRadius.circular(15.0),
+                                    child: const Image(
+                                        image: AssetImage(
+                                            "assets/images/flutter.png")),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                        Positioned(
+                          left: 0,
+                          top: 1,
+                          child: Container(
+                            decoration: const BoxDecoration(
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(10)),
+                                color: Colors.white),
+                            width: 20,
+                            height: 20,
+                            child: const Image(
+                                image: AssetImage("assets/images/like.png")),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                )
               ],
             ),
           ),
@@ -104,291 +210,6 @@ class RowWidget extends StatelessWidget {
             child: text,
           ),
         ],
-      ),
-    );
-  }
-}
-
-class ListViewWidgetFilm extends StatelessWidget {
-  const ListViewWidgetFilm({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(right: 30.0, top: 15),
-      child: Container(
-        decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(30.0),
-        ),
-
-        //  Color(0xfff5f5f5),
-        width: MediaQuery.of(context).size.width,
-        height: 310.0,
-        child: ListView.builder(
-          scrollDirection: Axis.horizontal,
-          reverse: true,
-          itemCount: 2,
-          itemBuilder: (BuildContext context, int index) {
-            return Stack(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.only(left: 8.0),
-                  child: Card(
-                    elevation: 20,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(15.0),
-                    ),
-                    // 0xfffefefe
-                    color: const Color(0xfffefefe),
-                    child: Container(
-                      decoration: BoxDecoration(
-                        color: const Color(0xfffefefe),
-                        // const Color(0xfffefefe),
-                        borderRadius: BorderRadius.circular(30.0),
-                      ),
-                      margin: const EdgeInsets.all(12.0),
-                      width: 180.0,
-                      child: Column(
-                        children: [
-                          ClipRRect(
-                            borderRadius: BorderRadius.circular(15.0),
-                            child: const Image(
-                              image: AssetImage("assets/images/oxidan.jpg"),
-                              // width: 300,
-                              height: 200,
-                            ),
-                          ),
-                          const SizedBox(
-                            height: 10,
-                          ),
-                          Row(
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: const [
-                              Icon(
-                                Icons.star,
-                                color: Color(0xffeca810),
-                              ),
-                              Text(
-                                "۴.۹",
-                                style: TextStyle(
-                                    fontSize: 15,
-                                    fontWeight: FontWeight.bold,
-                                    color: Color(0xff707070)),
-                              ),
-                              SizedBox(
-                                width: 70,
-                              ),
-                              Text(
-                                "اکسیدان",
-                                style: TextStyle(
-                                    fontSize: 15,
-                                    fontWeight: FontWeight.bold,
-                                    color: Color(0xff707070)),
-                              ),
-                            ],
-                          ),
-                          const SizedBox(
-                            height: 10,
-                          ),
-                          Row(
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: const [
-                              Text(
-                                "دقیقه ۴۵",
-                                style: TextStyle(
-                                    fontSize: 15,
-                                    fontWeight: FontWeight.bold,
-                                    color: Color(0xff707070)),
-                              ),
-                              SizedBox(
-                                width: 45,
-                              ),
-                              Text(
-                                "سال ۱۳۹۸",
-                                style: TextStyle(
-                                    fontSize: 15,
-                                    fontWeight: FontWeight.bold,
-                                    color: Color(0xff707070)),
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
-                Positioned(
-                  right: 0,
-                  child: Container(
-                    decoration: const BoxDecoration(
-                        borderRadius: BorderRadius.all(Radius.circular(10)),
-                        color: Colors.white),
-                    width: 30,
-                    height: 30,
-                    child: const Image(
-                        image: AssetImage("assets/images/like.png")),
-                  ),
-                ),
-              ],
-            );
-          },
-        ),
-      ),
-    );
-  }
-}
-
-class ListViewWidgetArtist extends StatelessWidget {
-  const ListViewWidgetArtist({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(right: 30.0, top: 15),
-      child: Container(
-        decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(30.0),
-        ),
-
-        //  Color(0xfff5f5f5),
-        width: MediaQuery.of(context).size.width,
-        height: 310.0,
-        child: ListView.builder(
-          scrollDirection: Axis.horizontal,
-          reverse: true,
-          itemCount: 2,
-          itemBuilder: (BuildContext context, int index) {
-            return Stack(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.only(left: 8.0),
-                  child: Card(
-                    elevation: 20,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(15.0),
-                    ),
-                    color: const Color(0xfffefefe),
-                    child: Container(
-                      decoration: BoxDecoration(
-                        color: const Color(0xfffefefe),
-                        // const Color(0xfffefefe)
-                        borderRadius: BorderRadius.circular(30.0),
-                      ),
-                      margin: const EdgeInsets.all(12.0),
-                      width: 180.0,
-                      child: Column(
-                        children: [
-                          ClipRRect(
-                            borderRadius: BorderRadius.circular(15.0),
-                            child: const Image(
-                              width: 250,
-                              // height: 200,
-                              image: AssetImage("assets/images/parsa.jpg"),
-                            ),
-                          ),
-                          SizedBox(
-                            height: 40,
-                          ),
-                          const Text(
-                            "پارسا پیروزفر",
-                            style: TextStyle(
-                                fontSize: 18,
-                                fontWeight: FontWeight.bold,
-                                color: Color(0xff707070)),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
-                Positioned(
-                  right: 0,
-                  child: Container(
-                    decoration: const BoxDecoration(
-                        borderRadius: BorderRadius.all(Radius.circular(10)),
-                        color: Colors.white),
-                    width: 30,
-                    height: 30,
-                    child: const Image(
-                        image: AssetImage("assets/images/like.png")),
-                  ),
-                ),
-              ],
-            );
-          },
-        ),
-      ),
-    );
-  }
-}
-
-class ListViewWidgetNews extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(right: 30.0, top: 15),
-      child: Container(
-        decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(30.0),
-        ),
-
-        //  Color(0xfff5f5f5),
-        width: MediaQuery.of(context).size.width,
-        height: 320.0,
-        child: ListView.builder(
-          scrollDirection: Axis.horizontal,
-          reverse: true,
-          itemCount: 2,
-          itemBuilder: (BuildContext context, int index) {
-            return Stack(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.only(left: 8.0),
-                  child: Card(
-                    elevation: 20,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(15.0),
-                    ),
-                    color: const Color(0xfffefefe),
-                    child: Container(
-                      decoration: BoxDecoration(
-                        color: const Color(0xfffefefe),
-                        borderRadius: BorderRadius.circular(30.0),
-                      ),
-                      margin: const EdgeInsets.all(12.0),
-                      width: 180.0,
-                      child: Column(
-                        children: [
-                          ClipRRect(
-                            borderRadius: BorderRadius.circular(15.0),
-                            child: const Image(
-                                image: AssetImage("assets/images/mehran.jpg")),
-                          ),
-                          Text("k"),
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
-                Positioned(
-                  right: 0,
-                  child: Container(
-                    decoration: const BoxDecoration(
-                        borderRadius: BorderRadius.all(Radius.circular(10)),
-                        color: Colors.white),
-                    width: 30,
-                    height: 30,
-                    child: const Image(
-                        image: AssetImage("assets/images/like.png")),
-                  ),
-                ),
-              ],
-            );
-          },
-        ),
       ),
     );
   }
